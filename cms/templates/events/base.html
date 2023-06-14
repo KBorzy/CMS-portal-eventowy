@@ -10,12 +10,13 @@
 
     <div id="menu">
         <div class="menu-left">
+            <p class="menu-item">Witaj, {{ user.username}}</p>
             <a href="{% url 'cms:index' %}" class="menu-item">Wydarzenia</a>
             <a href="{% url 'cms:add_event' %}" class="menu-item">Dodaj</a>
             <a href="#" class="menu-item">Kontakt</a>
         </div>
         <div class="menu-right">
-            <a href="#" class="menu-item">Logowanie</a>
+            <a href="{% url 'users:login' %}" class="menu-item">Logowanie</a>
             <a href="#" class="menu-item">Rejestracja</a>
         </div>
     </div>

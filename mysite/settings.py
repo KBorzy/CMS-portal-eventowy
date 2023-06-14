@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     "cms",
+    "users",
 
     "django.contrib.admin",
     "django.contrib.auth",

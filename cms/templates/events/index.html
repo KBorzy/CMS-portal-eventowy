@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Portal eventowy</title>
+</head>
+<body>
+    <h1>Portal eventowy</h1>
+    <ul>
+        {% for event in events %}
+        <li>
+            <h2>{{ event.title }}</h2>
+            <p>{{ event.content }}</p>
+            <p>{{ event.date_added }}</p>
+        </li>
+        {% empty %}
+        <li>Brak wydarzeń.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

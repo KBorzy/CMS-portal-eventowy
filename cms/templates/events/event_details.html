@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Portal eventowy - Szczegóły wydarzenia</title>
+</head>
+<body>
+    <h1>{{ event.title }}</h1>
+    <p>{{ event.content }}</p>
+    <p>Data dodania: {{ event.date_added }}</p>
+    <a href="{% url 'cms:index' %}">Powrót do listy wydarzeń</a>
+</body>
+</html>

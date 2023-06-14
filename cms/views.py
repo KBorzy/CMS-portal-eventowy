@@ -1,5 +1,5 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Event
 from .forms import EventForm
 
@@ -20,3 +20,8 @@ def add_event(request):
     else:
         form = EventForm()
     return render(request, 'events/add_event.html', {'form': form})
+
+
+def event_details(request, event_id):
+    event = get_object_or_404(Event, pk=event_id)
+    return render(request, 'events/event_details.html', {'event': event})

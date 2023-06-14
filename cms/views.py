@@ -25,3 +25,4 @@ def add_event(request):
 def event_details(request, event_id):
     event = get_object_or_404(Event, pk=event_id)
     return render(request, 'events/event_details.html', {'event': event})
+

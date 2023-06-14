@@ -1,0 +1,12 @@
+{% extends 'events/base.html' %}
+
+{% block content %}
+
+    <form method="POST" action="{% url 'users:register' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button name="submit">Rejestruj</button>
+        <input type="hidden" name="next" value="{% url 'cms:index' %}" />
+    </form>
+
+{% endblock content %}

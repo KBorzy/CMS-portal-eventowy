@@ -1,40 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Portal eventowy</title>
-    <style>
-        .container {
-            text-align: center;
-        }
-        table {
-            margin: 0 auto;
-            border-collapse: collapse;
-            width: 80%;
-        }
-        th, td {
-            padding: 10px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-        .btn {
-            padding: 8px 16px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            border-radius: 4px;
-            background-color: #4CAF50;
-            color: white;
-            transition: background-color 0.3s;
-        }
-        .btn:hover {
-            background-color: #45a049;
-        }
-    </style>
-</head>
-<body>
+{% extends 'events/base.html' %}
+
+{% block title %}Portal eventowy - Strona główna{% endblock %}
+
+{% block content %}
     <div class="container">
         <h1>Wydarzenia</h1>
         {% if events %}
@@ -62,5 +30,4 @@
         <p>Brak wydarzeń.</p>
         {% endif %}
     </div>
-</body>
-</html>
+{% endblock %}

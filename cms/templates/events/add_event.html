@@ -1,6 +1,12 @@
-<h1>Dodaj wydarzenie</h1>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Dodaj</button>
-</form>
+{% extends 'events/base.html' %}
+
+{% block title %}Portal eventowy - Dodaj wydarzenie{% endblock %}
+
+{% block content %}
+    <h1>Dodaj wydarzenie</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Dodaj</button>
+    </form>
+{% endblock %}

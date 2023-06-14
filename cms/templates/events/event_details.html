@@ -1,12 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Portal eventowy - Szczegóły wydarzenia</title>
-</head>
-<body>
+{% extends 'events/base.html' %}
+
+{% block title %}Portal eventowy - Szczegóły wydarzenia{% endblock %}
+
+{% block content %}
     <h1>{{ event.title }}</h1>
     <p>{{ event.content }}</p>
     <p>Data dodania: {{ event.date_added }}</p>
     <a href="{% url 'cms:index' %}">Powrót do listy wydarzeń</a>
-</body>
-</html>
+{% endblock %}

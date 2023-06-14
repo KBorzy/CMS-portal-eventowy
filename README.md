@@ -1,4 +1,4 @@
-Oto przykładowe README dla repozytorium projektu Django:
+
 
 # Projekt Django - CMS Portal eventowy
 

@@ -4,5 +4,6 @@ from . import views
 app_name = 'cms'
 urlpatterns = [
     #main page
-    path('', views.index, name='index')
+    path('', views.index, name='index'),
+    path('add_event/', views.add_event, name='add_event'),
 ]

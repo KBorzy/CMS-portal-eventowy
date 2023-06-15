@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Event
+from .models import Event, Ticket
 from .forms import EventForm
 
 
@@ -22,10 +22,21 @@ def add_event(request):
     return render(request, 'events/add_event.html', {'form': form})
 
 
+@login_required
 def event_details(request, event_id):
     event = get_object_or_404(Event, pk=event_id)
-    return render(request, 'events/event_details.html', {'event': event})
 
+    if request.method == 'POST':
+        ticket_quantity = int(request.POST.get('ticket_quantity', 0))
+        ticket_price = event.ticket_price
+        total_price = ticket_quantity * ticket_price
+
+        if ticket_quantity > 0:
+            ticket = Ticket(user=request.user, event=event, quantity=ticket_quantity, price=total_price)
+            ticket.save()
+            return redirect('cms:user_tickets')
+
+    return render(request, 'events/event_details.html', {'event': event})
 @login_required
 def user_events(request):
     events = Event.objects.filter(author=request.user)
@@ -45,3 +56,8 @@ def edit_event(request, event_id):
         form = EventForm(instance=event)
 
     return render(request, 'events/edit_event.html', {'event': event, 'form': form})
+
+@login_required
+def user_tickets(request):
+    tickets = Ticket.objects.filter(user=request.user)
+    return render(request, 'events/user_tickets.html', {'tickets': tickets})

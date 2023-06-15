@@ -1,0 +1,16 @@
+{% extends 'events/base.html' %}
+
+{% block title %}Portal eventowy - Moje bilety{% endblock %}
+
+{% block content %}
+    <h2>Moje bilety</h2>
+    {% if tickets %}
+        <ul>
+            {% for ticket in tickets %}
+                <li>{{ ticket.event.title }} - Ilość: {{ ticket.quantity }} - Cena: {{ ticket.price }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Brak zakupionych biletów.</p>
+    {% endif %}
+{% endblock %}

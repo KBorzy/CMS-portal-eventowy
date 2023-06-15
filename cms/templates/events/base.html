@@ -12,6 +12,7 @@
             {% if user.is_authenticated %}
                 <p class="menu-item">Witaj, {{ user.username }}</p>
                 <a href="{% url 'cms:user_events' %}" class="menu-item">Moje Wydarzenia</a>
+                <a href="{% url 'cms:user_tickets' %}" class="menu-item">Moje Bilety</a>
             {% endif %}
             <a href="{% url 'cms:index' %}" class="menu-item">Wydarzenia</a>
             <a href="{% url 'cms:add_event' %}" class="menu-item">Dodaj</a>

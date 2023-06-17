@@ -1,0 +1,11 @@
+{% extends 'events/base.html' %}
+
+{% block content %}
+    <h2>Kup bilety na wydarzenie "{{ event.title }}"</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="quantity">Ilość biletów:</label>
+        <input type="number" name="quantity" id="quantity" min="1" required>
+        <input type="submit" value="Kup">
+    </form>
+{% endblock %}

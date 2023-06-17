@@ -6,6 +6,8 @@
     <h1>{{ event.title }}</h1>
     <p>{{ event.content }}</p>
     <p>Data dodania: {{ event.date_added }}</p>
+    <p>Cena biletu: {{ event.ticket_price }}</p>
+    <p>Ilość dostępnych biletów: {{ event.ticket_quantity }}</p>
     <a href="{% url 'cms:index' %}">Powrót do listy wydarzeń</a>
 
     {% if user.is_authenticated and event.author == user %}

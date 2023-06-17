@@ -6,7 +6,7 @@
     <div class="container">
         <h1>Najnowsze wydarzenia</h1>
         {% if events %}
-        <table>
+        <table class="event-table">
             <tr>
                 <th>Tytuł</th>
                 <th>Opis</th>
@@ -19,6 +19,7 @@
                 <td>{{ event.content|truncatechars:100 }}</td>
                 <td>{{ event.date_added }}</td>
                 <td><a href="{% url 'cms:event_details' event.id %}" class="btn">Przejdź do wydarzenia</a></td>
+                <td><a href="{% url 'cms:buy_tickets' event.id %}" class="btn">Kup bilet</a></td>
             </tr>
             {% empty %}
             <tr>

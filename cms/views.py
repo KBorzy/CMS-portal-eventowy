@@ -61,3 +61,18 @@ def edit_event(request, event_id):
 def user_tickets(request):
     tickets = Ticket.objects.filter(user=request.user)
     return render(request, 'events/user_tickets.html', {'tickets': tickets})
+
+@login_required
+def buy_tickets(request, event_id):
+    event = Event.objects.get(pk=event_id)
+
+    if request.method == 'POST':
+        quantity = int(request.POST['quantity'])
+        price = event.ticket_price * quantity
+
+        ticket = Ticket(user=request.user, event=event, quantity=quantity, price=price)
+        ticket.save()
+
+        return redirect('cms:user_tickets')  # Przekierowanie do profilu po zakupie biletów
+
+    return render(request, 'events/buy_tickets.html', {'event': event})

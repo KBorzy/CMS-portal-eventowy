@@ -21,4 +21,4 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.API_INSTANCE_PRIVATE_KEY }}
           REMOTE_HOST: ${{ secrets.HOST_DNS }}
           REMOTE_USER: ${{ secrets.USERNAME }}
-          TARGET: /home/ec2-user/goodraves/CMS-portal-eventowy
+          TARGET: /home/ubuntu/goodraves/CMS-portal-eventowy

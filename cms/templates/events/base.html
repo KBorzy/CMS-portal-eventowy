@@ -1,46 +1,75 @@
-
 <!DOCTYPE html>
 <html>
 <head>
     <title>{% block title %}{% endblock %}</title>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+<!--        -->
+    </style>
 </head>
 <body>
-    <div id="menu">
-        <div class="menu-left">
-            {% if user.is_authenticated %}
-                <p class="menu-item">Witaj, {{ user.username }}</p>
-                <a href="{% url 'cms:user_events' %}" class="menu-item">Moje Wydarzenia</a>
-                <a href="{% url 'cms:user_tickets' %}" class="menu-item">Moje Bilety</a>
-            {% endif %}
-            <a href="{% url 'cms:index' %}" class="menu-item">Wydarzenia</a>
-            <a href="{% url 'cms:add_event' %}" class="menu-item">Dodaj</a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Twoja Nazwa Strony</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'cms:user_events' %}">Moje Wydarzenia</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'cms:user_tickets' %}">Moje Bilety</a>
+                    </li>
+                {% endif %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'cms:index' %}">Wydarzenia</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'cms:add_event' %}">Dodaj</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav">
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'users:logout' %}">Wyloguj</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'users:login' %}">Logowanie</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'users:register' %}">Rejestracja</a>
+                    </li>
+                {% endif %}
+            </ul>
         </div>
-        <div class="menu-right">
-            {% if user.is_authenticated %}
-                <a href="{% url 'users:logout' %}" class="menu-item">Wyloguj</a>
-            {% else %}
-                <a href="{% url 'users:login' %}" class="menu-item">Logowanie</a>
-                <a href="{% url 'users:register' %}" class="menu-item">Rejestracja</a>
-            {% endif %}
-        </div>
-    </div>
-
+    </nav>
 
     <div id="content">
         {% block content %}
-
+            <!-- Page content -->
         {% endblock %}
     </div>
 
-    <div id="footer">
-        <div class="footer-column">
-            <p>ipsum dolor sit amet, consectetur adipiscing elit. Nulla aliquam cursus est, at varius nisl pellentesque in. Pellentesque ut ligula sit amet quam scelerisque ultrices vitae ac ipsum. Vivamus vel tincidunt arcu, ut volutpat odio. Sed ut metus id nisl hendrerit eleifend. Sed auctor tortor id libero gravida tristique. Etiam venenatis, turpis in eleifend consectetur, metus purus aliquam risus, ut vestibulum arcu turpis ac sem. Praesent rutrum, ex et ultricies rhoncus, lectus nisi fringilla ex, vitae hendrerit est odio a ex. Nunc venenatis lorem at sagittis interdum.</p>
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <p>ipsum dolor sit amet, consectetur adipiscing elit. Nulla aliquam cursus est, at varius nisl pellentesque in. Pellentesque ut ligula sit amet quam scelerisque ultrices vitae ac ipsum. Vivamus vel tincidunt arcu, ut volutpat odio. Sed ut metus id nisl hendrerit eleifend. Sed auctor tortor id libero gravida tristique. Etiam venenatis, turpis in eleifend consectetur, metus purus aliquam risus, ut vestibulum arcu turpis ac sem. Praesent rutrum, ex et ultricies rhoncus, lectus nisi fringilla ex, vitae hendrerit est odio a ex. Nunc venenatis lorem at sagittis interdum.</p>
+                </div>
+                <div class="col">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla aliquam cursus est, at varius nisl pellentesque in. Pellentesque ut ligula sit amet quam scelerisque ultrices vitae ac ipsum. Vivamus vel tincidunt arcu, ut volutpat odio. Sed ut metus id nisl hendrerit eleifend. Sed auctor tortor id libero gravida tristique. Etiam venenatis, turpis in eleifend consectetur, metus purus aliquam risus, ut vestibulum arcu turpis ac sem. Praesent rutrum, ex et ultricies rhoncus, lectus nisi fringilla ex, vitae hendrerit est odio a ex. Nunc venenatis lorem at sagittis interdum.</p>
+                </div>
+            </div>
         </div>
-        <div class="footer-column">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla aliquam cursus est, at varius nisl pellentesque in. Pellentesque ut ligula sit amet quam scelerisque ultrices vitae ac ipsum. Vivamus vel tincidunt arcu, ut volutpat odio. Sed ut metus id nisl hendrerit eleifend. Sed auctor tortor id libero gravida tristique. Etiam venenatis, turpis in eleifend consectetur, metus purus aliquam risus, ut vestibulum arcu turpis ac sem. Praesent rutrum, ex et ultricies rhoncus, lectus nisi fringilla ex, vitae hendrerit est odio a ex. Nunc venenatis lorem at sagittis interdum.</p>
-        </div>
-    </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

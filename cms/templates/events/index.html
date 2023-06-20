@@ -4,31 +4,36 @@
 
 {% block content %}
     <div class="container">
-        <h1>Najnowsze wydarzenia</h1>
+        <h1 class="text-center">Najnowsze wydarzenia</h1>
         {% if events %}
-        <table class="event-table">
-            <tr>
-                <th>Tytuł</th>
-                <th>Opis</th>
-                <th>Data</th>
-                <th></th>
-            </tr>
-            {% for event in events %}
-            <tr>
-                <td>{{ event.title }}</td>
-                <td>{{ event.content|truncatechars:100 }}</td>
-                <td>{{ event.date_added }}</td>
-                <td><a href="{% url 'cms:event_details' event.id %}" class="btn">Przejdź do wydarzenia</a></td>
-                <td><a href="{% url 'cms:buy_tickets' event.id %}" class="btn">Kup bilet</a></td>
-            </tr>
-            {% empty %}
-            <tr>
-                <td colspan="4">Brak wydarzeń.</td>
-            </tr>
-            {% endfor %}
-        </table>
+            <table class="table table-striped table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Tytuł</th>
+                        <th>Opis</th>
+                        <th>Data</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for event in events %}
+                        <tr>
+                            <td>{{ event.title }}</td>
+                            <td>{{ event.content|truncatechars:100 }}</td>
+                            <td>{{ event.date_added }}</td>
+                            <td><a href="{% url 'cms:event_details' event.id %}" class="btn btn-primary btn-sm">Przejdź do wydarzenia</a></td>
+                            <td><a href="{% url 'cms:buy_tickets' event.id %}" class="btn btn-success btn-sm">Kup bilet</a></td>
+                        </tr>
+                    {% empty %}
+                        <tr>
+                            <td colspan="5">Brak wydarzeń.</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
         {% else %}
-        <p>Brak wydarzeń.</p>
+            <p class="text-center">Brak wydarzeń.</p>
         {% endif %}
     </div>
 {% endblock %}

@@ -11,6 +11,7 @@
     <a href="{% url 'cms:index' %}">Powrót do listy wydarzeń</a>
 
     {% if user.is_authenticated and event.author == user %}
-        <a href="{% url 'cms:edit_event' event.id %}">Edytuj</a>
+        <a href="{% url 'cms:edit_event' event.id %}" class="btn btn-success btn-sm">Edytuj</a>
+        <a href="{% url 'cms:buy_tickets' event.id %}" class="btn btn-success btn-sm">Kup bilet</a>
     {% endif %}
 {% endblock %}

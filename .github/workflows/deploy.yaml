@@ -28,4 +28,4 @@ jobs:
           host: ${{ secrets.HOST_DNS }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.API_INSTANCE_PRIVATE_KEY }}
-          script: pkill gunicorn && gunicorn --bind 0.0.0.0:8000 mysite.wsgi
+          script: sudo systemctl restart gunicorn

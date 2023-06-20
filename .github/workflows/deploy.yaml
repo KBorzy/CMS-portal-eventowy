@@ -1,6 +1,5 @@
 name: Push-to-EC2
 
-
 on:
   push:
     branches:
@@ -22,3 +21,11 @@ jobs:
           REMOTE_HOST: ${{ secrets.HOST_DNS }}
           REMOTE_USER: ${{ secrets.USERNAME }}
           TARGET: /home/ubuntu/goodraves/CMS-portal-eventowy
+
+      - name: Restart Gunicorn
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST_DNS }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.API_INSTANCE_PRIVATE_KEY }}
+          script: pkill gunicorn && gunicorn --bind 0.0.0.0:8000 mysite.wsgi

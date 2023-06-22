@@ -4,14 +4,21 @@
 
 {% block content %}
     <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="text-center">Witaj na portalu eventowym!</h2>
+                <p class="text-center">Znajdziesz tutaj najnowsze i najciekawsze wydarzenia w Twojej okolicy.</p>
+            </div>
+        </div>
+
         <h1 class="text-center">Najnowsze wydarzenia</h1>
         {% if events %}
-            <table class="table table-striped table-bordered">
-                <thead class="thead-dark">
+            <table class="table table-striped table-bordered table-light">
+                <thead class="thead-light">
                     <tr>
                         <th>Tytuł</th>
                         <th>Opis</th>
-                        <th>Data</th>
+                        <th>Data wydarzenia</th>
                         <th></th>
                         <th></th>
                     </tr>
@@ -21,7 +28,7 @@
                         <tr>
                             <td>{{ event.title }}</td>
                             <td>{{ event.content|truncatechars:100 }}</td>
-                            <td>{{ event.date_added }}</td>
+                            <td>{{ event.data_wydarzenia }}</td>
                             <td><a href="{% url 'cms:event_details' event.id %}" class="btn btn-primary btn-sm">Przejdź do wydarzenia</a></td>
                             <td><a href="{% url 'cms:buy_tickets' event.id %}" class="btn btn-success btn-sm">Kup bilet</a></td>
                         </tr>

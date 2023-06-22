@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+import datetime
 
 class Event(models.Model):
     title = models.CharField(max_length=200)
@@ -8,6 +9,7 @@ class Event(models.Model):
     date_added = models.DateTimeField(auto_now=True)
     ticket_quantity = models.PositiveIntegerField(default=0)
     ticket_price = models.DecimalField(max_digits=10, decimal_places=2, default=0.0)
+    data_wydarzenia = models.DateField(default=datetime.date.today)
 
 
     def __str__(self):

@@ -2,14 +2,17 @@
 
 # Projekt Django - CMS Portal eventowy
 
+live: http://3.73.101.33:8000/
+
 Ten projekt jest oparty na frameworku Django i zawiera aplikację internetową do zarządzania wydarzeniami i zakupem biletów.
+Projekt wdrożony na AWS. Dodatkowo wykorzystuje Github Actions w celu automatycznego wdrażania zmian na serwer po zmianie kodu w repozytorium.
 
 ## Wymagania
 
 Aby uruchomić ten projekt lokalnie, będziesz potrzebować następujących narzędzi:
 
-- Python (wersja X.X)
-- Django (wersja X.X)
+- Python (wersja 3.9)
+- Django (wersja 4.1.7)
 
 ## Instalacja
 
